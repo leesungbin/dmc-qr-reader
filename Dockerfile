@@ -10,5 +10,5 @@ WORKDIR /app
 COPY ./server/package*.json ./
 RUN npm ci
 COPY ./server ./
-COPY --from=builder /client/build ./
+COPY --from=builder /client/build ./build
 CMD ["npm","start"]
