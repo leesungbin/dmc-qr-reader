@@ -16,9 +16,10 @@ function response(res, user) {
 function findStrategy(userKey, req, reqKey) {
   return (user) => user[userKey] === req.body[reqKey];
 }
+
+app.use(express.static("build"));
 app.use(cors());
 app.use(express.json());
-app.use(express.static("build"));
 app.post("/find", async (req, res) => {
   const data = await db.data;
   const user = data.find(findStrategy("TicketID", req, "TicketID"));
@@ -30,6 +31,10 @@ app.post("/name", async (req, res) => {
   const user = data.find(findStrategy("이름", req, "name"));
   response(res, user);
 });
+
+setInterval(() => {
+  db.setData();
+}, 10 * 1000);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
