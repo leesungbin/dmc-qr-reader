@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "./App.css";
+import { Modal } from "./Modal";
 import { Reader } from "./Reader";
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({} as any);
+
   return (
     <div className="App">
       <Reader user={user} setUser={setUser} />
-      <p>{JSON.stringify(user)}</p>
+      {user["이름"] && <Modal user={user} />}
     </div>
   );
 }

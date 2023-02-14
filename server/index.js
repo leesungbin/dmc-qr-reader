@@ -18,6 +18,7 @@ function findStrategy(userKey, req, reqKey) {
 }
 app.use(cors());
 app.use(express.json());
+app.use(express.static("build"));
 app.post("/find", async (req, res) => {
   const data = await db.data;
   const user = data.find(findStrategy("TicketID", req, "TicketID"));
