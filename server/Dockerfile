@@ -1,6 +1,6 @@
 FROM node:16
 WORKDIR /app
-COPY package*.json .
+COPY package*.json ./
 RUN npm ci
-COPY . .
+COPY . ./
 CMD ["npm","start"]
