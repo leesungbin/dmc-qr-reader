@@ -21,6 +21,7 @@ export function Reader({ user, setUser }: ReaderProps) {
         if (timeout) clearTimeout(timeout);
         timeout = setTimeout(() => {
           setUser({});
+          axios.get(decodedText);
         }, 10000);
       });
     } catch (err) {}

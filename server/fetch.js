@@ -1,5 +1,3 @@
-// GET https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}
-//  https://docs.google.com/spreadsheets/d/1gK6uivv-OjmyxZSmhf09uJYyJoGQyZQFH7tZWp7uB0g/edit#gid=0
 const axios = require("axios");
 const ID = process.env.ID;
 const API_KEY = process.env.API_KEY;
