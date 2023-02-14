@@ -3,7 +3,7 @@ WORKDIR /client
 COPY ./client/package*.json ./
 RUN npm ci
 COPY ./client ./
-RUN npm build
+RUN npm run build
 
 FROM node:16
 WORKDIR /app
