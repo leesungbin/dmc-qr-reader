@@ -32,12 +32,13 @@ export function Reader({ user, setUser }: ReaderProps) {
         "reader",
         {
           fps: 10,
-          qrbox: { width: 300, height: 300 },
+          qrbox: { width: 260, height: 260 },
+          aspectRatio: 1.7777778,
         },
         false
       );
       scanner.render(onScanSuccess, onScanFailure);
     }
   }, [Html5QrcodeScanner]);
-  return <div id="reader"></div>;
+  return <div id="reader" style={{ height: "76vh" }}></div>;
 }
