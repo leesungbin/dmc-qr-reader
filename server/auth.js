@@ -5,12 +5,14 @@ const { google } = require("googleapis");
 
 const TOKEN_PATH = path.join(process.cwd(), "token.json");
 const CREDENTIAL_PATH = path.join(process.cwd(), "credentials.json");
+let credentials;
+
 function initCredentials() {
   fs.writeFileSync(CREDENTIAL_PATH, process.env.CREDENTIAL);
   fs.writeFileSync(TOKEN_PATH, process.env.TOKEN);
+  credentials = JSON.parse(fs.readFileSync(CREDENTIAL_PATH));
 }
 
-const credentials = JSON.parse(process.env.CREDENTIAL);
 const SCOPE = ["https://www.googleapis.com/auth/spreadsheets"];
 
 function saveCredentials(client) {
