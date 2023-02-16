@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const DB = require("./db");
+const { initCredentials } = require("./auth");
 const app = express();
 const port = process.env.PORT;
 
@@ -23,6 +24,8 @@ app.use(express.json());
 app.post("/find", async (req, res) => {
   const data = await db.data;
   const user = data.find(findStrategy("TicketID", req, "TicketID"));
+  const idx = data.findIndex(findStrategy("TicketID", req, "TicketID"));
+  db.checkIn(idx + 16, [[1]]);
   response(res, user);
 });
 
@@ -37,5 +40,7 @@ setInterval(() => {
 }, 10 * 1000);
 
 app.listen(port, () => {
+  initCredentials();
+  db.setData();
   console.log(`listening on port ${port}`);
 });
